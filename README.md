@@ -7,15 +7,20 @@ A simple, lightweight command-line interface (CLI) built in Python that provides
 **Mini Shell** is an educational command-line interface demonstrating fundamental shell concepts including command execution, process management, and user interaction.
 
 ### Project Statistics
-- **Lines of Code**: 356 (mini_shell.py)
+- **Lines of Code**: ~700+ (mini_shell.py)
 - **Language**: Python 3.6+
 - **Platform**: Linux/Unix (WSL compatible)
+- **Built-in Commands**: 30+
 
 ---
 
 ## ✨ Features
 
-- **Basic Shell Commands**: Navigate directories, list files, and execute system commands
+- **30+ Built-in Commands**: File operations, text processing, search utilities, and more
+- **Navigation Commands**: cd, pwd, ls, tree
+- **File Operations**: cat, touch, mkdir, rm, rmdir, mv, cp
+- **Text Processing**: echo, head, tail, grep, wc, sort, diff
+- **Search & System**: find, which, du, env
 - **Alias Support**: Create shortcuts for frequently used commands
 - **Command History**: Navigate through previous commands using arrow keys
 - **Reverse Search**: Press `Ctrl+R` to search through command history
@@ -44,13 +49,48 @@ python3 mini_shell.py
 
 ## 🛠️ Built-in Commands
 
+### Navigation & Directory Operations
 | Command | Description | Example |
 |---------|-------------|---------|
 | `cd [dir]` | Change directory | `cd ~/Documents` |
 | `pwd` | Print working directory | `pwd` |
 | `ls [path]` | List directory contents | `ls /home` |
-| `echo [text]` | Print text to screen | `echo Hello` |
+| `tree [path]` | Display directory tree structure | `tree .` |
+
+### File Operations
+| Command | Description | Example |
+|---------|-------------|---------|
+| `cat <file>` | Display file contents | `cat file.txt` |
+| `touch <file>` | Create empty file or update timestamp | `touch newfile.txt` |
+| `mkdir <dir>` | Create directories | `mkdir newfolder` |
+| `rm [-r] <file>` | Remove files or directories | `rm file.txt`, `rm -r folder` |
+| `rmdir <dir>` | Remove empty directories | `rmdir emptyfolder` |
+| `mv <src> <dest>` | Move or rename files | `mv old.txt new.txt` |
+| `cp [-r] <src> <dest>` | Copy files or directories | `cp file.txt copy.txt`, `cp -r dir1 dir2` |
+
+### Text Processing
+| Command | Description | Example |
+|---------|-------------|---------|
+| `echo [text]` | Print text to screen | `echo Hello World` |
+| `head [-n N] <file>` | Show first N lines (default 10) | `head -n 5 file.txt` |
+| `tail [-n N] <file>` | Show last N lines (default 10) | `tail -n 20 file.txt` |
+| `grep <pattern> [file]` | Search for pattern in files | `grep "error" log.txt` |
+| `wc [file]` | Count lines, words, bytes | `wc file.txt` |
+| `sort [file]` | Sort lines alphabetically | `sort names.txt` |
+| `diff <file1> <file2>` | Compare two files | `diff old.txt new.txt` |
+
+### Search & System
+| Command | Description | Example |
+|---------|-------------|---------|
+| `find [path] -name <pattern>` | Find files by name pattern | `find . -name "*.txt"` |
+| `which <command>` | Locate command in PATH | `which python3` |
+| `du [path]` | Disk usage summary | `du ~/Documents` |
+| `env` | Display environment variables | `env` |
 | `clear` | Clear terminal screen | `clear` |
+
+### Shell Management
+| Command | Description | Example |
+|---------|-------------|---------|
 | `history` | Show command history | `history` |
 | `history -c` | Clear command history | `history -c` |
 | `alias [name=value]` | Create/show aliases | `alias ll='ls -la'` |
@@ -89,8 +129,153 @@ Run any system command not built into the shell:
 ```bash
 python3 script.py
 git status
-cat file.txt
-grep "text" file.txt
+npm install
+```
+
+---
+
+## 📖 Command Reference
+
+### File Operations
+
+#### `cat <file>...`
+Display contents of one or more files.
+```bash
+cat file.txt              # Show file contents
+cat file1.txt file2.txt   # Show multiple files
+```
+
+#### `touch <file>...`
+Create empty files or update timestamps.
+```bash
+touch newfile.txt         # Create new file
+touch file1 file2 file3   # Create multiple files
+```
+
+#### `mkdir <dir>...`
+Create directories (creates parent directories automatically).
+```bash
+mkdir newfolder           # Create single directory
+mkdir dir1 dir2 dir3      # Create multiple directories
+mkdir -p path/to/folder   # Create nested directories
+```
+
+#### `rm [-r] <file>...`
+Remove files or directories.
+```bash
+rm file.txt               # Remove file
+rm file1.txt file2.txt    # Remove multiple files
+rm -r folder              # Remove directory recursively
+```
+
+#### `rmdir <dir>...`
+Remove empty directories only.
+```bash
+rmdir emptyfolder         # Remove empty directory
+```
+
+#### `mv <source>... <destination>`
+Move or rename files and directories.
+```bash
+mv old.txt new.txt        # Rename file
+mv file.txt ~/Documents/  # Move file to directory
+mv *.txt archive/         # Move multiple files
+```
+
+#### `cp [-r] <source>... <destination>`
+Copy files or directories.
+```bash
+cp file.txt copy.txt      # Copy file
+cp file.txt ~/backup/     # Copy to directory
+cp -r folder/ backup/     # Copy directory recursively
+```
+
+### Text Processing Commands
+
+#### `head [-n N] <file>`
+Display first N lines of a file (default: 10).
+```bash
+head file.txt             # Show first 10 lines
+head -n 5 file.txt        # Show first 5 lines
+head -n 20 log.txt        # Show first 20 lines
+```
+
+#### `tail [-n N] <file>`
+Display last N lines of a file (default: 10).
+```bash
+tail file.txt             # Show last 10 lines
+tail -n 20 file.txt       # Show last 20 lines
+tail -n 100 error.log     # Show last 100 lines
+```
+
+#### `grep <pattern> [file]...`
+Search for pattern in files using regex.
+```bash
+grep "error" log.txt      # Find "error" in file
+grep "TODO" *.py          # Search in multiple files
+grep "^import" main.py    # Regex: lines starting with "import"
+```
+
+#### `wc [file]...`
+Count lines, words, and bytes.
+```bash
+wc file.txt               # Show counts for file
+wc *.txt                  # Count in multiple files
+# Output format: lines words bytes filename
+```
+
+#### `sort [file]...`
+Sort lines alphabetically.
+```bash
+sort names.txt            # Sort file contents
+sort file1.txt file2.txt  # Sort multiple files together
+```
+
+#### `diff <file1> <file2>`
+Show unified diff between two files.
+```bash
+diff old.txt new.txt      # Compare two files
+diff version1.py version2.py
+```
+
+### Search & Discovery
+
+#### `find [path] -name <pattern>`
+Find files matching pattern (supports wildcards).
+```bash
+find . -name "*.txt"      # Find all .txt files
+find /home -name "*.py"   # Find Python files
+find . -name "test*"      # Find files starting with "test"
+```
+
+#### `which <command>...`
+Locate executable in PATH.
+```bash
+which python3             # Find python3 location
+which git node npm        # Check multiple commands
+```
+
+#### `tree [path]`
+Display directory structure as a tree.
+```bash
+tree                      # Show tree for current directory
+tree ~/Documents          # Show tree for specific path
+```
+
+### System & Environment
+
+#### `du [path]...`
+Display disk usage for files and directories.
+```bash
+du .                      # Disk usage of current directory
+du file.txt               # Size of specific file
+du ~/Documents            # Size of Documents folder
+```
+
+#### `env`
+Display all environment variables.
+```bash
+env                       # Show all variables
 ```
 
 ---
@@ -99,8 +284,8 @@ grep "text" file.txt
 
 ```
 Mini-Shell/
-├── mini_shell.py              # Main shell program (356 lines)
-├── README.md                  # This comprehensive documentation
+├── mini_shell.py              # Main shell program (~700 lines)
+├── README.md                  # Comprehensive documentation
 ├── .minishell_config.json     # Example configuration
 └── .gitignore                 # Git ignore rules
 
@@ -188,8 +373,78 @@ user@computer:~$ cd Documents
 user@computer:~/Documents$ ls
 file1.txt  file2.txt  project/
 
+user@computer:~/Documents$ tree
+.
+├── file1.txt
+├── file2.txt
+└── project
+    ├── main.py
+    └── README.md
+
 user@computer:~/Documents$ cd ..
 user@computer:~$ 
+```
+
+### File Operations
+```bash
+user@computer:~$ touch test.txt
+user@computer:~$ cat test.txt
+user@computer:~$ echo "Hello World" > test.txt
+user@computer:~$ cat test.txt
+Hello World
+
+user@computer:~$ mkdir projects
+user@computer:~$ cp test.txt projects/
+user@computer:~$ ls projects/
+test.txt
+
+user@computer:~$ mv test.txt backup.txt
+user@computer:~$ rm backup.txt
+```
+
+### Text Processing
+```bash
+user@computer:~$ cat data.txt
+apple
+banana
+cherry
+date
+elderberry
+
+user@computer:~$ head -n 2 data.txt
+apple
+banana
+
+user@computer:~$ tail -n 2 data.txt
+date
+elderberry
+
+user@computer:~$ sort data.txt
+apple
+banana
+cherry
+date
+elderberry
+
+user@computer:~$ grep "berry" data.txt
+elderberry
+
+user@computer:~$ wc data.txt
+      5       5      42 data.txt
+```
+
+### Search Operations
+```bash
+user@computer:~$ find . -name "*.txt"
+./test.txt
+./data.txt
+./projects/notes.txt
+
+user@computer:~$ which python3
+/usr/bin/python3
+
+user@computer:~$ du projects/
+4096    projects/
 ```
 
 ### Using Pre-configured Aliases
