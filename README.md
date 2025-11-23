@@ -754,14 +754,3 @@ exit
 
 ---
 
-## 📄 License
-
-This project is open source and available for educational purposes. Feel free to modify and enhance it!
-
----
-
-**Created**: November 2025  
-**Author**: Mini Shell Project  
-**Repository**: https://github.com/vinayydv3695/Mini-Shell
-
-**🐚 Happy Coding!**
