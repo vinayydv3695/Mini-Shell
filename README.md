@@ -674,3 +674,94 @@ Ideas for extending Mini Shell:
 - **Educators**: Teaching shell architecture
 
 ---
+
+## 📚 Example Commands
+
+Try these commands after starting the shell with `python3 mini_shell.py`:
+
+### 1. Basic Navigation
+```bash
+pwd
+ls
+cd /tmp
+pwd
+cd ~
+pwd
+```
+
+### 2. Using Pre-configured Aliases
+```bash
+ll          # same as: ls -la
+..          # same as: cd ..
+home        # same as: cd ~
+h           # same as: history
+```
+
+### 3. Creating Custom Aliases
+```bash
+alias gs='git status'
+alias mydir='cd ~/Documents'
+alias py='python3'
+```
+
+### 4. Show All Aliases
+```bash
+alias
+```
+
+### 5. Test Echo
+```bash
+echo Hello from Mini Shell!
+echo Today is: $(date)
+```
+
+### 6. View History
+```bash
+history
+```
+
+### 7. Clear Screen
+```bash
+clear
+```
+
+### 8. Get Help
+```bash
+help
+```
+
+### 9. Run External Commands
+```bash
+python3 --version
+git --version
+whoami
+date
+```
+
+### 10. Remove an Alias
+```bash
+unalias gs
+```
+
+### 11. Reverse Search Demo
+Press `Ctrl+R` and start typing part of a previous command.  
+Example: Type "echo" to find echo commands
+
+### 12. Exit the Shell
+```bash
+exit
+```
+
+---
+
+## 📄 License
+
+This project is open source and available for educational purposes. Feel free to modify and enhance it!
+
+---
+
+**Created**: November 2025  
+**Author**: Mini Shell Project  
+**Repository**: https://github.com/vinayydv3695/Mini-Shell
+
+**🐚 Happy Coding!**
