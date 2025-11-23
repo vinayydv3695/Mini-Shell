@@ -1,0 +1,10 @@
+{
+  "aliases": {
+    "ll": "ls -la",
+    "la": "ls -a",
+    "..": "cd ..",
+    "...": "cd ../..",
+    "home": "cd ~",
+    "h": "history"
+  }
+}
