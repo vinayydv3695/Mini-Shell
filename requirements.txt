@@ -1,0 +1,19 @@
+# Mini Shell Requirements
+# Python 3.6+ required
+
+# No external dependencies required!
+# Mini Shell uses only Python standard library modules:
+# - os
+# - sys
+# - subprocess
+# - json
+# - readline (built-in on Linux/macOS)
+# - shutil
+# - fnmatch
+# - re
+# - difflib
+# - pathlib
+# - datetime
+
+# Note: On Windows, you may need to install pyreadline3 for readline support:
+# pyreadline3>=3.4.1
